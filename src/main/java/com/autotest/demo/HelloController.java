@@ -21,11 +21,6 @@ public class HelloController {
         this.mathService = mathService;
     }
 
-    @GetMapping("/hello")
-    public Map<String, String> hello() {
-        return Map.of("message", "Hello from AutoTest demo-app");
-    }
-
     @GetMapping("/add")
     public Map<String, Integer> add(@RequestParam int a, @RequestParam int b) {
         return Map.of("result", mathService.add(a, b));
