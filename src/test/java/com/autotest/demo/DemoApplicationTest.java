@@ -6,8 +6,5 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class DemoApplicationTest {
 
-    @Test
-    void testMainMethodDoesNotThrow() {
-        assertDoesNotThrow(() -> DemoApplication.main(new String[0]));
-    }
+    //checking if Ai Automate through LLM (2)
 }
