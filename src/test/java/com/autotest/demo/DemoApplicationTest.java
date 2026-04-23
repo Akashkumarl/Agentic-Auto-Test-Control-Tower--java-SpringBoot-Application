@@ -1,9 +1,13 @@
 package com.autotest.demo;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
 class DemoApplicationTest {
-    //give automated test case from LLM
+
+    @Test
+    void testMainMethod() {
+        assertDoesNotThrow(() -> DemoApplication.main(new String[]{}));
+    }
 }
