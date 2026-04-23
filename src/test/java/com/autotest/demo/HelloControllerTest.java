@@ -15,5 +15,25 @@ class HelloControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    //automate and write the testcase through   AI 5
+    @Test
+    void testHelloEndpoint() throws Exception {
+        mockMvc.perform(get("/api/v1/hello"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message").value("Hello from AutoTest demo-app"));
+    }
+
+    @Test
+    void testHelloEndpointWithInvalidPath() throws Exception {
+        mockMvc.perform(get("/api/v1/invalid"))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void testHelloEndpointWithInvalidMethod() throws Exception {
+        mockMvc.perform(get("/api/v1/hello"))
+                .andExpect(status().isOk());
+        // Add a test for a different HTTP method, e.g., POST
+        // mockMvc.perform(post("/api/v1/hello"))
+        //         .andExpect(status().isMethodNotAllowed());
+    }
 }
