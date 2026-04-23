@@ -15,4 +15,10 @@ class HelloControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Test
+    void testHelloEndpoint() throws Exception {
+        mockMvc.perform(get("/api/v1/hello"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message").value("Hello from AutoTest demo-app"));
+    }
 }
