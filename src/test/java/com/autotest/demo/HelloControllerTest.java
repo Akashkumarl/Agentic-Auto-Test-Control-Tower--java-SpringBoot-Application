@@ -1,7 +1,6 @@
 package com.autotest.demo;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -16,4 +15,10 @@ class HelloControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Test
+    void testHelloEndpoint() throws Exception {
+        mockMvc.perform(get("/api/v1/hello"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message").value("Hello from AutoTest demo-app"));
+    }
 }
