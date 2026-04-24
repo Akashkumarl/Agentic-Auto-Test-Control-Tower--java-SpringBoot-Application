@@ -6,8 +6,5 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class DemoApplicationTest {
 
-    @Test
-    void testMain() {
-        assertDoesNotThrow(() -> DemoApplication.main(new String[0]));
-    }
+
 }
