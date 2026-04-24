@@ -1,6 +1,7 @@
 package com.autotest.demo;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -30,10 +31,14 @@ class HelloControllerTest {
 
     @Test
     void testHelloEndpointWithInvalidMethod() throws Exception {
+        mockMvc.perform(post("/api/v1/hello"))
+                .andExpect(status().isMethodNotAllowed());
+    }
+
+    @Test
+    void testHelloEndpointWithValidMethodAndPath() throws Exception {
         mockMvc.perform(get("/api/v1/hello"))
-                .andExpect(status().isOk());
-        // Add a test for a different HTTP method, e.g., POST
-        // mockMvc.perform(post("/api/v1/hello"))
-        //         .andExpect(status().isMethodNotAllowed());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message").value("Hello from AutoTest demo-app"));
     }
 }
